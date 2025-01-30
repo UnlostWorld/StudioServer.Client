@@ -6,6 +6,7 @@ using System.Text.Json;
 public class ErrorReport
 {
 	public string? Message { get; set; }
+	public string? LogFile { get; set; }
 
 	public Task<string> Send()
 	{
