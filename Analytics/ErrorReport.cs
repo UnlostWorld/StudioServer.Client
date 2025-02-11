@@ -1,4 +1,4 @@
-﻿namespace StudioServer.Client;
+﻿namespace StudioServer.Client.Analytics;
 
 using System.Threading.Tasks;
 using System.Text.Json;
@@ -11,6 +11,6 @@ public class ErrorReport
 	public Task<string> Send()
 	{
 		string json = JsonSerializer.Serialize(this);
-		return StudioServer.PostAsync("/error", json, "application/json");
+		return StudioServerApi.PostAsync("/Analytics/Error", json, "application/json");
 	}
 }

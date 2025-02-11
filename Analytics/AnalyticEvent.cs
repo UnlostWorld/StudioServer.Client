@@ -1,4 +1,4 @@
-﻿namespace StudioServer.Client;
+﻿namespace StudioServer.Client.Analytics;
 
 using System.Text.Json;
 
@@ -10,7 +10,7 @@ public class AnalyticEvent
 	public Task Send()
 	{
 		string json = JsonSerializer.Serialize(this);
-		return StudioServer.PostAsync("/analytics", json, "application/json");
+		return StudioServerApi.PostAsync("/Analytics/Event", json, "application/json");
 	}
 
 	public static void Send(AnalyticEvents evt, string? data = null)

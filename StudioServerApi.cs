@@ -3,20 +3,18 @@
 using System.Net;
 using System.Text;
 
-public static class StudioServer
+public static class StudioServerApi
 {
-	public static string Url = "http://unlostworld.duckdns.org:5202/api/";
+	public static string Url = "http://unlostworld.duckdns.org/api/";
 
 	private static readonly HttpClient client;
 
-	static StudioServer()
+	static StudioServerApi()
 	{
-		HttpClientHandler handler = new HttpClientHandler
-		{
-			AutomaticDecompression = DecompressionMethods.All
-		};
+		HttpClientHandler handler = new();
+		handler.AutomaticDecompression = DecompressionMethods.All;
 
-		client = new();
+		client = new(handler);
 	}
 
 	public static async Task<string> GetAsync(string uri)
